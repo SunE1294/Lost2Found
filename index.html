@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="../photos/icon.jpg" type="image/x-icon">
+     <link rel="stylesheet" href="style.css">
+    <title>Lost2Found</title>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header>
+    <div class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#home">
+        <img src="../photos/logo.png" alt="Lost2Found logo" />
+      </a>
+      <div class="spacer"></div>
+      <nav>
+        <a href="#home" aria-current="page">Home</a>
+        <a href="../about/about.html" >About</a>
+        <a href="../contact/contact.html">Contact</a>
+        <a href="../report_lost/report_lost.html">Report Lost</a>
+        <a href="../report_found/reportfound.html">Report Found</a>
+        <a href="../login/login.html" class="btn btn-ghost">Login</a>
+        <!-- Show this instead of Login when authenticated
+        <a href="#logout" class="btn btn-ghost">Logout</a> -->
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-inner" id="home-container">
+        <h1>Lost it? Found it?</h1>
+        <p class="tagline">Get it back with Lost2Found.</p>
+
+        <form class="search-wrap" action="#search" method="get" role="search" aria-label="Search lost or found items">
+          <label for="search" class="visually-hidden">Search items</label>
+          <input
+            type="search"
+            name="q"
+            id="search"
+            placeholder="Search item name, category, or location"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="../report_lost/report_lost.html">Report Lost</a>
+          <a class="btn btn-ghost" href="../report_found/reportfound.html">Report Found</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Example content sections you can fill later -->
+    <section class="section" aria-labelledby="recent-lost-title">
+      <h2 id="recent-lost-title">Recently Lost</h2>
+      <div class="grid">
+        <article class="card" aria-label="Lost item card">Add cards dynamically…</article>
+        <article class="card" aria-label="Lost item card">
+            <img src="../photos/watch.webp" alt="watch photo">
+            <p>Location: Mohammadpur <br>
+            Time: 8:35 PM</p>
+        </article>
+        <article class="card" aria-label="Lost item card"></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="recent-found-title">
+      <h2 id="recent-found-title">Recently Found</h2>
+      <div class="grid">
+        <article class="card" aria-label="Found item card"></article>
+        <article class="card" aria-label="Found item card"></article>
+        <article class="card" aria-label="Found item card"></article>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    © <span id="year"></span> Lost2Found • <a href="#privacy">Privacy</a> • <a href="#terms">Terms</a>
+  </footer>
+
+  <script>
+    // Small enhancement: current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
