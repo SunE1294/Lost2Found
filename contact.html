@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="../photos/icon.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="../main_index/style.css"/>
+  <link rel="stylesheet" href="contact.css"/>
+  <title>Contact • Lost2Found</title>
+</head>
+<body>
+  <!-- Shared header via include.js -->
+  <div id="site-header"></div>
+<header>
+  <div class="nav" role="navigation" aria-label="Primary">
+    <a class="brand" href="index.html">
+      <img src="../photos/logo.png" alt="Lost2Found logo" />
+    </a>
+    <div class="spacer"></div>
+    <nav>
+     <a href="../main_index/index.html">Home</a>
+      <a href="../about/about.html" aria-current="page">About</a>
+      <a href="../contact/contact.html">Contact</a>
+      <a href="../report_lost/report_lost.html">Report Lost</a>
+      <a href="../report_found/reportfound.html">Report Found</a>
+      <a href="../login/login.html" class="btn btn-ghost">Login</a>
+    </nav>
+  </div>
+</header>
+  <main class="contact-wrap" id="main" aria-labelledby="contact-title">
+    <!-- animated background blobs -->
+    <div class="bg-blobs" aria-hidden="true">
+      <span class="blob b1"></span>
+      <span class="blob b2"></span>
+      <span class="blob b3"></span>
+      <span class="blob b4"></span>
+    </div>
+
+    <section class="contact-card">
+      <header class="contact-head">
+        <img src="../photos/logo.png" alt="Lost2Found logo" />
+        <h1 id="contact-title">Get in touch</h1>
+        <p class="muted">Questions, feedback, or partnership ideas? Send us a message.</p>
+      </header>
+
+      <!-- Success message -->
+      <div class="success" role="status" aria-live="polite">
+        <div class="success-icon">✅</div>
+        <h2>Message sent!</h2>
+        <p>Thanks for reaching out. We’ll get back to you soon.</p>
+        <a class="btn btn-primary" href="index.html">Back to Home</a>
+      </div>
+
+      <!-- Envelope animation (hidden until submit) -->
+      <div class="envelope" aria-hidden="true">
+        <svg viewBox="0 0 320 220" class="env-svg" width="320" height="220">
+          <rect class="env-back" x="20" y="40" width="280" height="160" rx="12" ry="12"/>
+          <rect class="env-letter" x="30" y="55" width="260" height="130" rx="8" ry="8"/>
+          <path class="env-front" d="M20 100 L160 180 L300 100 L300 200 L20 200 Z"/>
+          <path class="env-flap" d="M20 100 L160 20 L300 100 Z"/>
+          <path class="env-accent" d="M26 100 L160 28 L294 100" />
+        </svg>
+      </div>
+
+      <!-- Info + Form grid -->
+      <div class="contact-body">
+        <aside class="info-card">
+          <h2 class="info-title">Who we are</h2>
+          <p>
+            Lost2Found is maintained by a small volunteer team focused on helping
+            communities quickly reconnect with their belongings.
+          </p>
+
+          <ul class="contact-details">
+            <li><strong>Email:</strong> support@lost2found.com</li>
+            <li><strong>Phone:</strong> +94 716520690</li>
+            <li><strong>Address:</strong> Dhaka, Bangladesh</li>
+          </ul>
+
+          <div class="social-links">
+            <a href="#" aria-label="Twitter" class="sc">Twitter</a>
+            <a href="#" aria-label="Facebook" class="sc">Facebook</a>
+            <a href="#" aria-label="LinkedIn" class="sc">LinkedIn</a>
+          </div>
+
+          <div class="info-note">
+            Prefer email? We usually reply within 24–48 hours.
+          </div>
+        </aside>
+
+        <!-- Contact form -->
+        <!-- action="javascript:void(0)" prevents navigation even if JS fails early -->
+        <form id="contact-form" action="javascript:void(0)" novalidate>
+          <div class="grid-2">
+            <label class="field">
+              <span class="label">Full name</span>
+              <input type="text" name="name" class="input" required />
+            </label>
+
+            <label class="field">
+              <span class="label">Email</span>
+              <input type="email" name="email" class="input" autocomplete="email" required />
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="label">Subject</span>
+            <input type="text" name="subject" class="input" required />
+          </label>
+
+          <label class="field">
+            <span class="label">Message</span>
+            <textarea name="message" class="input textarea" rows="5" required></textarea>
+          </label>
+
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Send message</button>
+            <a class="btn btn-ghost" href="index.html">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo" class="contact-footer">
+    © <span id="year"></span> Lost2Found
+  </footer>
+
+  <script src="js/include.js" defer></script>
+
+  <!-- Inline (internal) JS for the contact page -->
+  <script>
+    // --- tiny helpers ---
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+    // --- elements ---
+    const card   = document.querySelector('.contact-card');
+    const form   = document.getElementById('contact-form');
+    const submit = form ? form.querySelector('button[type="submit"]') : null;
+
+    // ensure the year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // bind submit
+    if (!form) {
+      console.error('[contact] form not found');
+    } else {
+      console.log('[contact] binding submit');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // stop navigation/querystring
+
+        // quick validation
+        const fd = new FormData(form);
+        const must = ['name','email','subject','message'];
+        for (const k of must) {
+          const v = (fd.get(k) || '').toString().trim();
+          if (!v) {
+            alert('Please fill out all required fields.');
+            return;
+          }
+        }
+
+        // disable while animating
+        if (submit) {
+          submit.disabled = true;
+          submit.setAttribute('aria-busy', 'true');
+        }
+
+        // start animation state: packs form + shows envelope + closes flap (via CSS)
+        card.classList.add('sending');
+
+        // simulate network
+        await sleep(1400);
+
+        // reveal success overlay
+        card.classList.add('success');
+
+        // reset for next time
+        form.reset();
+
+        // re-enable (overlay covers UI anyway)
+        if (submit) {
+          submit.disabled = false;
+          submit.removeAttribute('aria-busy');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
