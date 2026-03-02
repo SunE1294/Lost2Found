@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="../photos/icon.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="../main_index/style.css"/>
+  <link rel="stylesheet" href="login.css"/>
+  <title>Login • Lost2Found</title>
+</head>
+<body>
+  <!-- Shared header (loaded by /js/include.js) -->
+  <div id="site-header"></div>
+
+  <main class="auth-wrap" id="main">
+    <section class="auth-card" aria-labelledby="login-title">
+      <div class="auth-head">
+        <img src="../photos/logo.png" alt="Lost2Found logo" />
+        <h1 id="login-title">Welcome back</h1>
+      </div>
+      <p class="auth-sub">Log in to manage your posts and messages.</p>
+
+      <form id="login-form" novalidate>
+        <div class="error" id="form-error" aria-live="polite">Please enter your email and password.</div>
+
+        <div class="field">
+          <input id="email" name="email" type="email" class="input" placeholder=" " autocomplete="email" required/>
+          <label for="email" class="float-label">Email address</label>
+        </div>
+
+        <div class="field">
+          <input id="password" name="password" type="password" class="input" placeholder=" " autocomplete="current-password" required/>
+          <label for="password" class="float-label">Password</label>
+          <!-- If you later add JS, you can place a show/hide button here -->
+        </div>
+
+        <div class="row">
+          <label class="remember">
+            <input type="checkbox" id="remember" /> Remember me
+          </label>
+          <a class="link" href="#">Forgot password?</a>
+        </div>
+
+        <button class="btn btn-primary btn-wide" type="submit">Login</button>
+
+        <div class="or" aria-hidden="true">or</div>
+
+        <div class="social">
+          <a class="btn social-btn" href="#" aria-label="Continue with Google">🔵 Google</a>
+          <a class="btn social-btn" href="#" aria-label="Continue with Facebook">🔷 Facebook</a>
+        </div>
+
+        <p class="hint">New here? <a class="link" href="../singup/signup.html">Create an account</a></p>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo" class="auth-footer">
+    © <span id="year"></span> Lost2Found
+  </footer>
+
+  <script src="/js/include.js" defer></script>
+  <script>
+    // Only a tiny enhancement that doesn't affect layout
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('google-login').addEventListener('click', () => {
+    // Google login logic
+});
+
+document.getElementById('facebook-login').addEventListener('click', () => {
+    // Facebook login logic
+});
+
+  </script>
+</body>
+</html>
