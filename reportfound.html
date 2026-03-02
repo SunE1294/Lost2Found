@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="../photos/icon.jpg" type="image/x-icon"/>
+  <link rel="stylesheet" href="../main_index/style.css"/>
+  <link rel="stylesheet" href="reportfound.css"/>
+  <title>Report Found • Lost2Found</title>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header>
+    <div class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="../main_index/index.html">
+        <img src="../photos/logo.png" alt="Lost2Found logo" />
+      </a>
+      <div class="spacer"></div>
+      <nav>
+        <a href="../main_index/index.html">Home</a>
+        <a href="../about/about.html">About</a>
+        <a href="../contact/contact.html">Contact</a>
+        <a href="../report_lost/report_lost.html">Report Lost</a>
+        <a href="../report_found/reprotfound.html" aria-current="page">Report Found</a>
+        <a href="../login/login.html" class="btn btn-ghost">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section hero">
+      <div class="hero-inner">
+        <h1>Report a Found Item</h1>
+        <p class="tagline">Help someone get their lost item back by reporting it here.</p>
+
+        <form id="report-found-form" class="form-card" novalidate>
+          <div class="field">
+            <input type="text" id="item-name" name="item-name" class="input" placeholder=" " required/>
+            <label for="item-name" class="float-label">Item Name</label>
+          </div>
+
+          <div class="field">
+            <input type="text" id="location" name="location" class="input" placeholder=" " required/>
+            <label for="location" class="float-label">Found Location</label>
+          </div>
+
+          <div class="field">
+            <input type="datetime-local" id="found-date" name="found-date" class="input" required/>
+            <label for="found-date" class="float-label">Date & Time Found</label>
+          </div>
+
+          <div class="field">
+            <textarea id="description" name="description" class="input" placeholder=" " rows="4" required></textarea>
+            <label for="description" class="float-label">Description</label>
+          </div>
+
+          <div class="field">
+            <input type="file" id="photo" name="photo" class="input"/>
+            <label for="photo" class="float-label">Upload Photo (optional)</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-wide">Submit Report</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    © <span id="year"></span> Lost2Found • <a href="#privacy">Privacy</a> • <a href="#terms">Terms</a>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Example form submit handler (without backend)
+    document.getElementById('report-found-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Found item report submitted! (Demo)');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

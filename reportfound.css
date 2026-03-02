@@ -1,0 +1,194 @@
+/* 
+   General Reset & Base Styles
+  */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 
+   Header & Navigation
+    */
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav .brand img {
+  height: 50px;
+}
+
+.nav nav a {
+  margin-left: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.nav nav a:hover {
+  background-color: #e0f0ff;
+}
+
+.btn-ghost {
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.btn-ghost:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* 
+   Hero Section / Form Card
+   */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+.hero-inner {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  max-width: 600px;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.hero .tagline {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* Form Styles */
+.form-card .field {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: none;
+  transition: border 0.3s;
+}
+
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.float-label {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.3s ease all;
+  background-color: #fff;
+  padding: 0 0.25rem;
+}
+
+.input:focus + .float-label,
+.input:not(:placeholder-shown) + .float-label,
+textarea:focus + .float-label,
+textarea:not(:placeholder-shown) + .float-label {
+  top: -0.6rem;
+  left: 0.5rem;
+  font-size: 0.75rem;
+  color: #007bff;
+}
+
+/* Textarea adjustments */
+textarea.input {
+  resize: vertical;
+}
+
+/* File input */
+input[type="file"].input {
+  padding: 0.5rem;
+}
+
+/* Submit button */
+.btn-wide {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-wide:hover {
+  background-color: #0056b3;
+}
+
+/*
+   Footer
+   */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+  color: #555;
+  margin-top: 2rem;
+}
+
+/* 
+   Responsive
+    */
+@media (max-width: 768px) {
+  .hero-inner {
+    padding: 1.5rem;
+  }
+
+  .nav nav a {
+    margin-left: 1rem;
+  }
+}
