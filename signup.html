@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="../photos/icon.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="../main_index/style.css"/>
+  <link rel="stylesheet" href="signup.css"/>
+  <title>Create Account • Lost2Found</title>
+</head>
+<body>
+  <!-- Shared header (loaded by /js/include.js) -->
+  <div id="site-header"></div>
+
+  <main class="auth-wrap" id="main">
+    <section class="auth-card" aria-labelledby="signup-title">
+      <div class="auth-head">
+        <img src="../photos/logo.png" alt="Lost2Found logo" />
+        <h1 id="signup-title">Create your account</h1>
+      </div>
+      <p class="auth-sub">Join Lost2Found to report, search, and recover items faster.</p>
+
+      <form id="signup-form" action="#" method="post" novalidate>
+        <div class="grid-2">
+          <label class="field">
+            <span class="label">Full Name</span>
+            <input type="text" name="full_name" class="input" required />
+          </label>
+
+          <label class="field">
+            <span class="label">Username</span>
+            <input type="text" name="username" class="input" minlength="3" maxlength="20" required />
+          </label>
+
+          <label class="field">
+            <span class="label">Email</span>
+            <input type="email" name="email" class="input" autocomplete="email" required />
+          </label>
+
+          <label class="field">
+            <span class="label">Phone (optional)</span>
+            <input type="tel" name="phone" class="input" inputmode="tel" placeholder="+1 555 123 4567" />
+          </label>
+
+          <label class="field">
+            <span class="label">Password</span>
+            <input id="pw" type="password" name="password" class="input" minlength="6" autocomplete="new-password" required />
+          </label>
+
+          <label class="field">
+            <span class="label">Confirm Password</span>
+            <input id="pw2" type="password" name="password_confirm" class="input" minlength="6" required />
+          </label>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" name="terms" required />
+          <span>I agree to the <a class="link" href="/terms.html">Terms &amp; Conditions</a> and <a class="link" href="/privacy.html">Privacy Policy</a>.</span>
+        </label>
+
+        <button class="btn btn-primary btn-wide" type="submit">Create account</button>
+
+        <p class="hint">Already have an account? <a class="link" href="login.html">Sign in</a></p>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo" class="auth-footer">
+    © <span id="year"></span> Lost2Found
+  </footer>
+
+  <script src="/js/include.js" defer></script>
+  <script>
+    // tiny enhancement only
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Optional inline check for password match (no heavy JS)
+    const form = document.getElementById('signup-form');
+    const pw = document.getElementById('pw');
+    const pw2 = document.getElementById('pw2');
+    form?.addEventListener('submit', (e) => {
+      if (pw.value !== pw2.value) {
+        e.preventDefault();
+        alert('Passwords do not match.');
+        pw2.focus();
+      }
+    });
+  </script>
+</body>
+</html>
